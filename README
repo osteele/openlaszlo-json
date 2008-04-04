@@ -1,0 +1,45 @@
+= JSON for OpenLaszlo
+
+Author:: Oliver Steele
+Copyright:: Copyright 2006 Oliver Steele.  All rights reserved.
+Homepage:: http://osteele.com/sources/openlaszlo/json
+License:: MIT License.
+Version:: 1.0
+
+JSON for OpenLaszlo is an implementation of JSON for the OpenLaszlo platform.  It is an Open Source package available under the MIT License.
+
+== Requirements
+Any ECMAScript interpreter or compiler.  (There are {other implementations}[http://www.json.org/] available for Javascript[http://www.json.org/js.html] and ActionScript -- the sole benefit of this implementation is that it's compatible with OpenLaszlo[openlaszlo.org].)
+
+The *.lzx files are OpenLaszlo source files, and require the OpenLaszlo[http://openlaszlo.org] SDK.
+
+== Installation
+Download the zip file from http://osteele.com/sources/openlaszlo/json/openlaszlo-json-1.0.zip.
+
+== Usage
+  JSON.stringify(123) // => '123'
+  JSON.parse('123') // => 123
+
+See the header of json.js for additional usage information.
+
+== Examples
+
+Here is a complete OpenLaszlo program that prints a JSON string, and a parsed object, to the debugger:
+  <canvas debug="true">
+    <script src="json.js">
+    <script>
+      Debug.write(JSON.stringify([1729, "argos", {a: 1}]));
+      Debug.write(JSON.parse('[1729, "argos", {"a": 1}]'));
+    </script>
+  </canvas>
+
+For an example of using JSON with AJAX to parse response text, see {json-example.lzx}[json-example.lzx].  This example is also running on the {blog page for this project}[http://osteele.com/archives/2006/02/json-for-openlaszlo].
+
+== Contents
+README:: This file
+MIT-LICENSE:: The MIT license
+json.js:: The implementation
+json-example.lzx:: An example of using json.js with AJAX
+data:: A directory of static json files, for use with the example
+json-tests.lzx:: Unit tests (using LzUnit)
+json-test-data.js:: Data for the unit tests

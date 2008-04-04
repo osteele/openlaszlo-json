@@ -1,0 +1,56 @@
+<!--
+Author: Oliver Steele
+Copyright: Copyright 2006 Oliver Steele.  All rights reserved.
+Homepage: http://osteele.com/sources/openlaszlo/json
+License: MIT License.
+-->
+<canvas title="reMatch" debug="true" layout="axis: y" proxied="false">
+  <include href="rpc/ajax.lzx"/>
+  <script src="json.js"/>
+  
+  <hbox>
+    <button onclick="request('number.json')">Number</button>
+    <button onclick="request('string.json')">String</button>
+    <button onclick="request('array.json')">Array</button>
+    <button onclick="request('object.json')">Object</button>
+  </hbox>
+  
+  <attribute name="responseText" type="string" value=""/>
+  
+  <vbox visible="${canvas.responseText}">
+    <hbox>
+      <text>Text:</text>
+      <text resize="true" text="${canvas.responseText}"/>
+    </hbox>
+    <hbox>
+      <text>Value:</text>
+      <text resize="true" text="${JSON.parse(canvas.responseText)}"/>
+    </hbox>
+    <hbox>
+      <text>Type:</text>
+      <text resize="true" text="${typeof JSON.parse(canvas.responseText)}"/>
+    </hbox>
+  </vbox>
+  
+  <script>
+    function request(basename) {
+      var url = "http:data/" + basename;
+      canvas.setAttribute('responseText', '');
+      var req = new XMLHttpRequest();
+      req.onreadystatechange = processReqChange;
+      req.open("GET", url, true);
+      req.send(null);
+    }
+    
+    function processReqChange(request) {
+      if (request.readyState == 4) {
+        if (request.status == 200) {
+	  var text = request.responseText;
+          var object = JSON.parse(text);
+          canvas.setAttribute('responseText', text);
+          Debug.write(object);
+        }
+      }
+    }
+  </script>
+</canvas>
