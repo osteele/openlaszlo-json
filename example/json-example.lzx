@@ -4,9 +4,9 @@ Copyright: Copyright 2006 Oliver Steele.  All rights reserved.
 Homepage: http://osteele.com/sources/openlaszlo/json
 License: MIT License.
 -->
-<canvas title="reMatch" debug="true" layout="axis: y" proxied="false">
+<canvas debug="true" layout="axis: y" proxied="true">
   <include href="rpc/ajax.lzx"/>
-  <script src="json.js"/>
+  <script src="../lib/json.js"/>
   
   <hbox>
     <button onclick="request('number.json')">Number</button>
@@ -32,9 +32,9 @@ License: MIT License.
     </hbox>
   </vbox>
   
-  <script>
+  <script><![CDATA[
     function request(basename) {
-      var url = "http:data/" + basename;
+      var url = "data/" + basename;
       canvas.setAttribute('responseText', '');
       var req = new XMLHttpRequest();
       req.onreadystatechange = processReqChange;
@@ -52,5 +52,5 @@ License: MIT License.
         }
       }
     }
-  </script>
+  ]]></script>
 </canvas>

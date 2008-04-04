@@ -7,7 +7,7 @@ License: MIT License.
 
 <canvas>
   <include href="lzunit"/>
-  <script src="json.js"/>
+  <script src="../lib/json.js"/>
   <script src="json-test-data.js"/>
   
   <TestSuite>
