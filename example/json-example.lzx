@@ -46,6 +46,9 @@ License: MIT License.
       if (request.readyState == 4) {
         if (request.status == 200) {
 	  var text = request.responseText;
+	  // work around a bug in OL 4.0
+	  if (!text)
+	    text = request.responseXML.childNodes[0].data;
           var object = JSON.parse(text);
           canvas.setAttribute('responseText', text);
           Debug.write(object);
